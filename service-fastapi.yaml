@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-service
+spec:
+  selector:
+    app: fastapi  # Doit correspondre à l'étiquette de votre pod
+  ports:
+    - protocol: TCP
+      port: 80         # Port exposé du service
+      targetPort: 5000  # Port du conteneur
+  type: LoadBalancer
