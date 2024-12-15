@@ -20,5 +20,8 @@ spec:
         ports:
         - containerPort: {{ .Values.fastApi.containerPort }}
         env:
-        - name: {{ .name }}
-          value: {{ .value }}
+            {{- range .Values.fastApi.environment }}
+            - name: "{{ .name }}"
+              value: "{{ .value }}"
+            {{- end }}
+
