@@ -15,9 +15,10 @@ fastApi:
       value: "postgresql://admin:password@db:5432/storedb"
   #configuration ingress
   ingressName: ingress-fastapi
+  ingressClassName: nginx
   ingressDomain: jhennebo.be
   ingressSecretName: fastapi-tls
-  ingressServiceName: fastapi
+  ingressServiceName: fastapi-service
   ingressServicePort: 5000
   ingressCertManagerIssuer: letsencrypt-prod
   #config hpa
@@ -99,15 +100,6 @@ postgresService:
   type: NodePort
   selector:
     app: postgres
-
-#configuration ingress
-ingress:
-  ingressName: ingress-fastapi
-  domain: jhennebo.be
-  secretName: fastapi-tls
-  serviceName: fastapi
-  servicePort: 5000
-  certManagerIssuer: letsencrypt-prod
 
 clusterIssuer:
   name: letsencrypt-prod

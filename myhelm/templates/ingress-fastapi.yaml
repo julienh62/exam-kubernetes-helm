@@ -6,10 +6,11 @@ metadata:
     cert-manager.io/cluster-issuer: "{{ .Values.fastApi.ingressCertManagerIssuer }}"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
+  ingressClassName: {{ .Values.fastApi.ingressClassName }}
   tls:
   - hosts:
     - {{ .Values.fastApi.ingressDomain }}  # Remplacez par votre domaine
-    secretName: {{ .Values.fastApi.IngressSecretName }}   # Le nom du secret pour le certificat SSL
+    secretName: {{ .Values.fastApi.ingressSecretName }}   # Le nom du secret pour le certificat SSL
   rules:
   - host: {{ .Values.fastApi.ingressDomain }}  # Remplacez par votre domaine
     http:
